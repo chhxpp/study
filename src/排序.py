@@ -1,0 +1,25 @@
+a=[-5,0,-23,2]
+b=sorted(a,key=lambda x:x if x >= 0 else -x)
+print(b)
+
+def order(s):
+    if s=='学士':p=0
+    elif s=='硕士':p=1
+    elif s=='博士':p=2
+    elif s=='壮士':p=3
+    elif s=='圣斗士':p=4
+    else:p=-1
+    return p
+
+names=['学士','圣斗士','博士','壮士','硕士']
+names.sort(key=order,reverse=True)
+print(names)
+
+d={'学士':0,'硕士':1,'博士':2,'壮士':3,'圣斗士':4}
+def order2(s):
+    return d[s[1]]
+
+names=[['张学士','学士'],['李圣斗士','圣斗士'],['王博士','博士'],['陈壮士','壮士'],['杨硕士','硕士']]
+names.sort(key=order2,reverse=False)
+print(names)
+
