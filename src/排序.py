@@ -44,5 +44,11 @@ names=[
        ['杨硕士','硕士']
        ]
 names.sort(key=func,reverse=False)
+e=sorted(names,key=func)
+print('e:',e)
+print('names:',names)
+
+import random
+print(random.sample(names,2))
+random.shuffle(names)
 print(names)
-#250826在单位编辑，编辑前没有从github拉取。
