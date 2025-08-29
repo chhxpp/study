@@ -1,16 +1,11 @@
-import chardet
+# 手动修复双重编码错误
+乱码 = "鎴戠埍缂栫▼锛岀紪绋嬪彲浠ュ垱閫犲囧"
 
-file='./src/t1.txt'
+# 第一步：用UTF-8编码乱码文本（撤销最后一次错误解码）
+第一层字节 = 乱码.encode('utf-8')
 
-with open(file, 'rb') as f:
-    s=f.read()
+# 第二步：用GBK解码（撤销第一次错误解码）
+第二层文本 = 第一层字节.decode('gbk')
 
-d=chardet.detect(s)
-e=d['encoding']
-print(d)
-
-with open(file, 'r', encoding=e) as f:
-    s=f.readlines()
-
-for i in s:
-    print(i)
+# 第三步：现在应该得到正确文本
+print("手动修复结果:", 第二层文本)

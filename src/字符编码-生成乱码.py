@@ -1,14 +1,23 @@
-# 生成一个乱码文件
-# 这个程序会创建一个用GBK编码的中文文件
-# 当用错误的编码(如UTF-8)打开时就会显示乱码
+import os
 
-# 中文内容
-chinese_text = "这是一段中文文本，用于测试字符编码和解码问题。"
+def create_typical_garbled_file():
+    # 内容包含：常用中文（GB2312支持）+ 生僻字（GB2312不支持）+ 数字符号
+    content = """这是一段包含生僻字的测试文本：
+常用字：你好、世界、123、!@#$%
+生僻字：𪚥、𠀎、𠑥、𡃁、𣗥（这些字GB2312不支持）
+用GB2312编码保存后，生僻字会变成乱码，适合练习解码。
+"""
+    
+    # 关键：用GB2312编码保存（不支持部分生僻字，自然产生乱码）
+    file_name = "./src/t1.txt"  # 直接生成你要的t1.txt
+    with open(file_name, "w", encoding="gb2312", errors="xmlcharrefreplace") as f:
+        f.write(content)
+    
+    full_path = os.path.abspath(file_name)
+    print(f"典型乱码文件已生成：{full_path}")
+    print("提示：用记事本打开会看到生僻字变成乱码（如&#172133;），符合真实场景")
 
-# 用GBK编码写入文件
-with open(".\src\t1.txt", "w", encoding="utf-16") as f:
-    f.write(chinese_text)
-
-print("已生成乱码文件: garbled_text.txt")
-print("提示: 这个文件实际是用GBK编码的中文文本")
+if __name__ == "__main__":
+    create_typical_garbled_file()
+    
     
