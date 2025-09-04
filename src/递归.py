@@ -1,15 +1,3 @@
-def 阶乘(n):
-    if n==1:
-        s=1
-    else:
-        s=n*阶乘(n-1)
-    return s
-
-n=4
-a=阶乘(n)
-print(a)
-
-#方法1
 def see(l):
     out=[]
     for i in l:
