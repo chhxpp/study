@@ -12,29 +12,30 @@ class Role:
         self.power_out=self.power
 
     def attack(self,enemy):
-        print(f'【{self.name}】对【{enemy.name}】发起{self.power}点攻击')
+        print(f'【{self.name}】攻击【{enemy.name}】')
         enemy.hurt(self)
 
     def hurt(self,attacker):
+        old_blood=self.blood
         self.blood-=attacker.power_out
         if self.blood<=0: self.blood=0
         暴力 = '暴力' if attacker.power_out>attacker.power else ''  # 三元表达式
-        print(f'【{self.name}】受到【{attacker.name}】{attacker.power_out}点{暴力}攻击,血量->{self.blood}', end='')
+        print(f'   ---【{self.name}】受到【{attacker.name}】{暴力}攻击,血量减少{attacker.power_out}点，{old_blood}->{self.blood}', end='\n')
         self.die() if self.blood <= 0 else print()  # 三元表达式
 
     def die(self):
-        print(f'------【{self.name}】卒')
+        print(f'      ---【{self.name}】卒\n')
 
 class Player(Role):
     def attack(self, enemy):
         # 倒计时显示函数
         def countdown():
-            initial_prompt = f"请玩家【{self.name}】选择对【{enemy.name}】的攻击方式：1-常规、2-疯狗"
-            for i in range(3, 0, -1):
+            initial_prompt = f"玩家【{self.name}】攻击【{enemy.name}】,选择攻击方式：1-常规、2-疯狗"
+            for i in range(2, 0, -1):
                 sys.stdout.write(f"\r{initial_prompt}  {i}秒{' ' * 10}")
                 sys.stdout.flush()
                 time.sleep(1)
-            sys.stdout.write(f"\r{initial_prompt} 自动选择疯狗模式！{' ' * 10}\n")
+            sys.stdout.write(f"\r{initial_prompt} 自动选择疯狗模式！{' ' * 10}")
             sys.stdout.flush()
 
         # 启动倒计时线程
