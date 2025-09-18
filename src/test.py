@@ -1,3 +1,8 @@
+from pathlib import Path
+p1=Path(__file__) .parent
+p2=p1 / 'data/img/草原.bmp'
+print(p1)
+print(list(p1.rglob('*')))
 # 极简版编码测试工具
 hex_str = (
     "FF FE 27 59 77 6D 4A 55 0C FF 60 4F 68 51 2F 66 "
