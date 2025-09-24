@@ -12,15 +12,15 @@ class Role:
         self.power_out=self.power
 
     def attack(self,enemy):
-        print(f'【{self.name}】攻击【{enemy.name}】')
+        print(f'{self.name}->{enemy.name}')
         enemy.hurt(self)
 
     def hurt(self,attacker):
         old_blood=self.blood
         self.blood-=attacker.power_out
         if self.blood<=0: self.blood=0
-        暴力 = '暴力' if attacker.power_out>attacker.power else ''  # 三元表达式
-        print(f'   ---【{self.name}】受到【{attacker.name}】{暴力}攻击,血量减少{attacker.power_out}点，{old_blood}->{self.blood}', end='\n')
+        暴力 = '暴力,' if attacker.power_out>attacker.power else ''  # 三元表达式
+        print(f'   ---{暴力}{self.name}血量-{attacker.power_out}，{old_blood}->{self.blood}', end='\n')
         self.die() if self.blood <= 0 else print()  # 三元表达式
 
     def die(self):
@@ -30,7 +30,7 @@ class Player(Role):
     def attack(self, enemy):
         # 倒计时显示函数
         def countdown():
-            initial_prompt = f"玩家【{self.name}】攻击【{enemy.name}】,选择攻击方式：1-常规、2-疯狗"
+            initial_prompt = f"*{self.name}->{enemy.name},选择方式：1-常规、2-疯狗"
             for i in range(2, 0, -1):
                 sys.stdout.write(f"\r{initial_prompt}  {i}秒{' ' * 10}")
                 sys.stdout.flush()
