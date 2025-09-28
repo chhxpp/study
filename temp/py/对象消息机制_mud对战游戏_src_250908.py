@@ -1,4 +1,4 @@
-from class_role import Role,Player
+from mod.class_role import Role,Player
 from time import sleep
 from random import sample
 

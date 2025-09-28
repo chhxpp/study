@@ -1,8 +1,8 @@
-from class_role import Role,Player
+from mod.class_role import Role,Player
 from time import sleep
 from random import sample
 
-r=[Role('王昭君',10,30),
+r=[Role('王昭君',10,30),#攻击力，生命值
    Role('程咬金',5,40),
    Role('李世民',20,20),
    Player('张三',10,40)

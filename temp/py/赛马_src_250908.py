@@ -1,6 +1,6 @@
 from pathlib import Path
 import pygame
-from class_animal import Horse,Lala
+from mod.class_animal import Horse,Lala
 
 filenames = ['草原.bmp', 'h1.png', 'h2.png', 'h3.png', 'h4.png', 'lala1.png', 'lala2.png', 'lala3.png', 'lala4.png']
 imgfile = [Path(__file__).parent / 'data' / 'img' / name for name in filenames]

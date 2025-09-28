@@ -1,4 +1,15 @@
-.venv/
-.vscode/
-**/__pycache__/
-*/test/
+# 排除不需要同步的目录（直接列出要忽略的目录）
+.venv/          # 虚拟环境
+.vscode/        # VS Code配置
+res/            # 资源目录（根据你之前的需求排除）
+temp/           # 临时目录
+
+# 排除Python编译缓存（自动生成，可重新编译）
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# （可选）排除其他临时文件/日志
+*.log
+.DS_Store  # Mac系统自动生成的隐藏文件
