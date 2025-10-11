@@ -14,8 +14,6 @@ def say_hello(*args):
     return f'{sum}'
 
 say_hello(3,5,1,'a', None)
-#250826修改
-#250827修改2
 
 
 
